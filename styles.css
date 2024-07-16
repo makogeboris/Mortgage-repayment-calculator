@@ -1,0 +1,579 @@
+:root {
+  /* Colors */
+  --Lime: hsl(61, 70%, 52%);
+  --Red: hsl(4, 69%, 50%);
+  --White: hsl(0, 0%, 100%);
+  --Slate-100: hsl(202, 86%, 94%);
+  --Slate-300: hsl(203, 41%, 72%);
+  --Slate-500: hsl(200, 26%, 54%);
+  --Slate-700: hsl(200, 24%, 40%);
+  --Slate-900: hsl(202, 55%, 16%);
+  --radio-bg: rgba(216, 219, 47, 0.15);
+  --btn-hover: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    var(--Lime);
+  --shadow: 0 2rem 4rem rgba(19, 48, 65, 0.1);
+  --results-bg: rgba(0, 0, 0, 0.25);
+  --line-bg: rgba(154, 190, 213, 0.25);
+
+  /* Typography */
+
+  /* font-size */
+  --fs-xxl: 3.5rem;
+  --fs-xxl-mob: 2.5rem;
+  --fs-xl: 1.5rem;
+  --fs-lg: 1.125rem;
+  --fs-md: 1rem;
+  --fs-sm: 0.875rem;
+  /* line-height */
+  --lh-lg: 150%;
+  --lh-sm: 125%;
+  /* font-weight */
+  --fw-bd: 700;
+  --fw-md: 500;
+  /* letter-spacing */
+  --ls: -1px;
+
+  /* Spacing */
+  --space-xxxl: 2.5rem;
+  --space-xxl: 2rem;
+  --space-xl: 1.5rem;
+  --space-lg: 1rem;
+  --space-md: 0.75rem;
+  --space-sm: 0.5rem;
+  --space-xs: 0.25rem;
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  box-sizing: border-box;
+}
+
+/* Smooth scroll */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+* {
+  margin: 0;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.main-content {
+  max-width: 63rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  background: var(--White);
+  padding: var(--space-xxl) var(--space-xl);
+}
+
+.title-bar {
+  margin-bottom: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+.title {
+  font-weight: var(--fw-bd);
+  font-size: var(--fs-xl);
+  line-height: var(--lh-sm);
+  color: var(--Slate-900);
+}
+
+.btn-reset {
+  font-weight: var(--fw-md);
+  font-size: var(--fs-md);
+  line-height: var(--lh-lg);
+  text-decoration-line: underline;
+  color: var(--Slate-700);
+  cursor: pointer;
+  border: transparent;
+  background: transparent;
+  transition: all ease 0.3s;
+}
+
+.btn-reset:is(:hover, :focus) {
+  color: var(--Slate-900);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  position: relative;
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-weight: var(--fw-md);
+  font-size: var(--fs-md);
+  line-height: var(--lh-lg);
+  color: var(--Slate-700);
+}
+
+.input-text {
+  font-weight: var(--fw-bd);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-sm);
+  color: var(--Slate-900);
+  padding-block: var(--space-md);
+  padding-inline: var(--space-lg);
+  border: 1px solid var(--Slate-500);
+  border-radius: var(--space-xs);
+  width: 100%;
+  transition: all ease 0.3s;
+}
+
+.input-text-number {
+  padding-inline-start: 3.75rem;
+}
+
+.input-text:is(:hover, :focus) {
+  border: 1px solid var(--Slate-900);
+}
+
+.input-text:focus-visible {
+  outline: none;
+  border: 1px solid var(--Slate-900);
+}
+
+.input-text:valid {
+  border: 1px solid var(--Lime);
+}
+
+.input-text:valid + .fix {
+  background: var(--Lime);
+  color: var(--Slate-900);
+}
+
+/* .input-text:invalid {
+  border: 1px solid var(--Red);
+}
+
+.input-text:invalid + .fix {
+  background: var(--Red);
+  color: var(--White);
+} */
+
+.prefix,
+.suffix {
+  background: var(--Slate-100);
+  position: absolute;
+  padding: var(--space-md) var(--space-lg);
+  /* top: 31.5%; */ /* error true*/
+  top: 31.5%;
+  transform: translateY(22.5%);
+  font-weight: var(--fw-bd);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-sm);
+  color: var(--Slate-700);
+}
+
+.prefix {
+  border-radius: 3px 0 0 3px;
+  left: 1px;
+}
+
+.suffix {
+  border-radius: 0 3px 3px 0;
+  right: 1px;
+}
+
+.error-text {
+  font-weight: var(--fw-md);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-lg);
+  color: var(--Red);
+  display: none;
+}
+
+.form__radio-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form__radio-group {
+  gap: var(--space-md);
+}
+
+.form-group-radio {
+  margin-bottom: 0;
+}
+
+.form__radio-group-wrap {
+  width: 100%;
+}
+
+.form__radio-item {
+  font-weight: var(--fw-bd);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-sm);
+  color: var(--Slate-900);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: var(--space-lg);
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  border: 1px solid var(--Slate-500);
+  border-radius: var(--space-xs);
+  transition: all 0.3s ease-in-out;
+}
+
+.form__radio-item:hover {
+  border: 1px solid var(--Lime);
+}
+
+.form__radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.form__custom-radio {
+  width: 1.125rem;
+  height: 1.125rem;
+  background-color: var(--White);
+  border: 0.125rem solid var(--Slate-500);
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+}
+
+.form__custom-radio::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 50%;
+  top: 50%;
+  width: 0.625rem;
+  height: 0.625rem;
+  background-color: var(--Lime);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form__radio:checked + .form__custom-radio {
+  border-color: var(--Lime);
+}
+
+.form__radio:focus + .form__custom-radio {
+  border-color: var(--Lime);
+  box-shadow: var(--shadow);
+}
+
+.form__radio:checked + .form__custom-radio::after {
+  display: block;
+}
+
+.btn-submit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-lg) var(--space-xxxl);
+  gap: var(--space-md);
+  background: var(--Lime);
+  border-radius: 6rem;
+  border: transparent;
+  cursor: pointer;
+  width: 100%;
+  margin-top: var(--space-xl);
+  transition: background ease 0.3s;
+}
+
+.btn-submit:hover {
+  background: var(--btn-hover);
+}
+
+.btn-text {
+  font-weight: var(--fw-bd);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-sm);
+  text-align: center;
+  color: var(--Slate-900);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--Slate-900);
+  padding: var(--space-xxl) var(--space-xl);
+}
+
+.empty-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  text-align: center;
+  display: none;
+}
+
+.complete-results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.complete-title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.ouput {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: var(--space-xl) var(--space-lg);
+  gap: var(--space-lg);
+  background: var(--results-bg);
+  border-top: var(--space-xs) solid var(--Lime);
+  border-radius: var(--space-sm);
+}
+
+.monthly-wrap,
+.term-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.monthly-total {
+  font-weight: var(--fw-bd);
+  font-size: var(--fs-xxl-mob);
+  line-height: var(--lh-sm);
+  color: var(--Lime);
+}
+
+.term-total {
+  font-weight: var(--fw-bd);
+  font-size: var(--fs-xl);
+  line-height: var(--lh-sm);
+  color: var(--White);
+}
+
+.result-title {
+  font-weight: var(--fw-bd);
+  font-size: var(--fs-xl);
+  line-height: var(--lh-sm);
+  color: var(--White);
+}
+
+.result-info {
+  font-weight: 500;
+  font-size: var(--fs-lg);
+  line-height: var(--lh-lg);
+  color: var(--Slate-300);
+}
+
+hr {
+  width: 100%;
+  border: 0;
+  height: 1px;
+  background: var(--line-bg);
+}
+
+/* Hide the arrows in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Hide the arrows in Chrome, Safari, Edge, and Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media screen and (min-width: 37.5rem) {
+  body {
+    background: var(--Slate-100);
+    padding: var(--space-xxxl);
+  }
+
+  .main-content {
+    background: var(--White);
+    box-shadow: var(--shadow);
+    border-radius: var(--space-xl);
+  }
+
+  .form {
+    border-radius: var(--space-xl);
+    padding: var(--space-xxxl);
+  }
+
+  .form-row {
+    flex-direction: row;
+    gap: var(--space-xl);
+  }
+
+  .title-bar {
+    margin-bottom: var(--space-xxxl);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .btn-submit {
+    margin-top: var(--space-xxxl);
+    width: fit-content;
+    align-self: flex-start;
+  }
+
+  .results {
+    padding: var(--space-xxxl);
+    border-radius: 0 0 var(--space-xl) var(--space-xl);
+    width: 100%;
+  }
+
+  .complete-results {
+    gap: var(--space-xxxl);
+  }
+
+  .monthly-total {
+    font-size: var(--fs-xxl);
+  }
+
+  .ouput {
+    padding: var(--space-xxl);
+    gap: var(--space-xxl);
+  }
+}
+
+@media screen and (min-width: 63rem) {
+  body {
+    display: grid;
+    place-items: center;
+  }
+
+  .main-content {
+    margin: 0 auto;
+    flex-direction: row;
+  }
+
+  .results {
+    justify-content: center;
+    max-width: 31.5rem;
+    border-radius: 0 var(--space-xl) var(--space-xl) 5rem;
+  }
+}
