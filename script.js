@@ -6,7 +6,7 @@ const errorMessage = document.querySelectorAll(".error-text");
 const fix = document.querySelectorAll(".fix");
 const submitBtn = document.querySelector(".btn-submit");
 const resetBtn = document.querySelector(".btn-reset");
-const formGroups = document.querySelectorAll(".form-group");
+const formGroups = document.querySelectorAll(".form-group, .form-group-radio");
 
 const resultEmpty = document.querySelector(".empty-results");
 const resultComplete = document.querySelector(".complete-results");
@@ -84,23 +84,32 @@ const clearError = (e) => {
     group.style.marginBottom = "24px";
   }
 
-  const group = e.target.closest(".form-group");
-  const errorMessage = group.querySelector(".error-text");
-  errorMessage.textContent = "";
-  errorMessage.style.display = "none";
-  e.target.style.borderColor = "";
+  const group = e.target.closest(".form-group, .form-group-radio");
 
-  const fix = group.querySelector(".fix");
-  fix.style.background = "var(--Slate-100)";
-  fix.style.color = "var(--Slate-700)";
+  if (group) {
+    const errorMessage = group.querySelector(".error-text");
+    if (errorMessage) {
+      errorMessage.textContent = "";
+      errorMessage.style.display = "none";
+    }
+
+    e.target.style.borderColor = "";
+
+    const fix = group.querySelector(".fix");
+    if (fix) {
+      fix.style.background = "var(--Slate-100)";
+      fix.style.color = "var(--Slate-700)";
+    }
+  }
 };
 
 formGroups.forEach((group) => {
-  const input = group.querySelector("input");
-
-  if (input) {
-    input.addEventListener("focus", clearError);
-  }
+  const inputs = group.querySelectorAll("input");
+  inputs.forEach((input) => {
+    if (input) {
+      input.addEventListener("focus", clearError);
+    }
+  });
 });
 
 const handleSubmit = (e) => {
