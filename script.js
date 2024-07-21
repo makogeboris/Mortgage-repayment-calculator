@@ -97,8 +97,8 @@ const clearError = (e) => {
 
     const fix = group.querySelector(".fix");
     if (fix) {
-      fix.style.background = "var(--Slate-100)";
-      fix.style.color = "var(--Slate-700)";
+      fix.style.background = "";
+      fix.style.color = "";
     }
   }
 };
