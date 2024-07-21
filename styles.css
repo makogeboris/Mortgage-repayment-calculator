@@ -246,14 +246,10 @@ body {
 
 .input-text:focus-visible {
   outline: none;
-  border: 1px solid var(--Slate-900);
-}
-
-.input-text:valid {
   border: 1px solid var(--Lime);
 }
 
-.input-text:valid + .fix {
+.input-text:focus-visible + .fix {
   background: var(--Lime);
   color: var(--Slate-900);
 }
