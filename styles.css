@@ -236,7 +236,7 @@ body {
   transition: all ease 0.3s;
 }
 
-.input-text-number {
+.amount {
   padding-inline-start: 3.75rem;
 }
 
@@ -258,27 +258,16 @@ body {
   color: var(--Slate-900);
 }
 
-/* .input-text:invalid {
-  border: 1px solid var(--Red);
-}
-
-.input-text:invalid + .fix {
-  background: var(--Red);
-  color: var(--White);
-} */
-
-.prefix,
-.suffix {
+.fix {
   background: var(--Slate-100);
   position: absolute;
   padding: var(--space-md) var(--space-lg);
-  /* top: 31.5%; */ /* error true*/
-  top: 31.5%;
-  transform: translateY(22.5%);
+  top: 44%;
   font-weight: var(--fw-bd);
   font-size: var(--fs-lg);
   line-height: var(--lh-sm);
   color: var(--Slate-700);
+  transition: all 0.5s ease;
 }
 
 .prefix {
@@ -297,6 +286,10 @@ body {
   line-height: var(--lh-lg);
   color: var(--Red);
   display: none;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(var(--space-xl));
+  transition: all 0.5s ease;
 }
 
 .form__radio-group {
@@ -311,6 +304,8 @@ body {
 
 .form-group-radio {
   margin-bottom: 0;
+  padding: var(--space-md) 0 0 0;
+  border: transparent;
 }
 
 .form__radio-group-wrap {
@@ -424,13 +419,15 @@ body {
   align-items: center;
   gap: var(--space-lg);
   text-align: center;
-  display: none;
+  transition: all 0.5s ease;
 }
 
 .complete-results {
   display: flex;
   flex-direction: column;
   gap: var(--space-xl);
+  display: none;
+  transition: all 0.5s ease;
 }
 
 .complete-title {
