@@ -79,39 +79,6 @@ const showError = (input) => {
   input.style.borderColor = "var(--Red)";
 };
 
-// const clearError = (e) => {
-//   for (const group of formGroups) {
-//     group.style.marginBottom = "24px";
-//   }
-
-//   const group = e.target.closest(".form-group, .form-group-radio");
-
-//   if (group) {
-//     const errorMessage = group.querySelector(".error-text");
-//     if (errorMessage) {
-//       errorMessage.textContent = "";
-//       errorMessage.style.display = "none";
-//     }
-
-//     e.target.style.borderColor = "";
-
-//     const fix = group.querySelector(".fix");
-//     if (fix) {
-//       fix.style.background = "";
-//       fix.style.color = "";
-//     }
-//   }
-// };
-
-// formGroups.forEach((group) => {
-//   const inputs = group.querySelectorAll("input");
-//   inputs.forEach((input) => {
-//     if (input) {
-//       input.addEventListener("focus", clearError);
-//     }
-//   });
-// });
-
 const clearError = (e) => {
   for (const group of formGroups) {
     group.style.marginBottom = "24px";
@@ -119,7 +86,6 @@ const clearError = (e) => {
 
   let group = e.target.closest(".form-group, .form-group-radio");
   if (!group) {
-    // If the group is not found, it might be a radio button inside a label, so check parent nodes
     group = e.target
       .closest(".form__radio-group-wrap")
       ?.closest(".form-group-radio");
@@ -132,12 +98,12 @@ const clearError = (e) => {
       errorMessage.style.display = "none";
     }
 
-    e.target.style.borderColor = ""; // Reset border color
+    e.target.style.borderColor = "";
 
     const fix = group.querySelector(".fix");
     if (fix) {
-      fix.style.background = ""; // Remove inline background to allow CSS to apply
-      fix.style.color = ""; // Remove inline color to allow CSS to apply
+      fix.style.background = "";
+      fix.style.color = "";
     }
   }
 };
@@ -148,7 +114,6 @@ formGroups.forEach((group) => {
     if (input) {
       input.addEventListener("focus", clearError);
       if (input.type === "radio") {
-        // Add change event listener for radio buttons
         input.addEventListener("change", clearError);
       }
     }
